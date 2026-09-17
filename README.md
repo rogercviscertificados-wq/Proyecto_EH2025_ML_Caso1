@@ -8,8 +8,7 @@ Este estudio analiza los factores que influyen en la deserción escolar en Boliv
 2. **Ejecuta las celdas en orden** (Shift + Enter)
 3. En la **Celda 2** elige cómo cargar los archivos `.sav`:
    - **Opción A:** Subirlos manualmente desde tu computadora (rápido, ~120 MB)
-   - **Opción B:** Montar Google Drive (recomendado si los tienes en Drive)
-4. El notebook descargará automáticamente los resultados al final
+   4. El notebook descargará automáticamente los resultados al final
 
 ##  Pregunta de investigación
 
