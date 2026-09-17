@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2dc95822a9c17ea3ff8ae036981df73c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 30px; left: 30px; z-index: 1000;
+            background: white; padding: 10px 14px; border-radius: 5px;
+            border: 2px solid #ccc; font-size: 11px;">
+  <p style="margin:0 0 6px 0; font-weight:bold; color:#333;">Tasa de no asistencia escolar</p>
+  <p style="margin:2px 0;"><span style="color:#990000;">●</span> Alta (>60%)</p>
+  <p style="margin:2px 0;"><span style="color:#B45F06;">●</span> Media (50-60%)</p>
+  <p style="margin:2px 0;"><span style="color:#38761D;">●</span> Baja (<50%)</p>
+  <hr style="margin:6px 0;">
+  <p style="margin:0; font-size:9px; color:#666;">Radio ∝ n estudiantes</p>
+  <p style="margin:2px 0;font-size:9px;color:#666;">Fuente: EH2025 - INE Bolivia</p>
+</div>
+    <h3 style='position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:1000;background:white;padding:8px 16px;border-radius:5px;border:2px solid #ccc;font-size:13px;'>Deserción escolar por departamento — Bolivia EH2025</h3>
+    
+            <div class="folium-map" id="map_2dc95822a9c17ea3ff8ae036981df73c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2dc95822a9c17ea3ff8ae036981df73c = L.map(
+                "map_2dc95822a9c17ea3ff8ae036981df73c",
+                {
+                    center: [-16.5, -64.5],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ef79ddb84642e406b89bc6cb0281cc11 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ef79ddb84642e406b89bc6cb0281cc11.addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+            var circle_marker_2d1533d3cd334c7e3b57228af2e0f3a1 = L.circleMarker(
+                [-19.0471, -65.2596],
+                {"bubblingMouseEvents": true, "color": "#990000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#990000", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22.513995647152463, "stroke": true, "weight": 2}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+        var popup_b6019cf3a8dd7c303c0f9f475c38bc6c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c79abb0ebd3a8d884465145d477c6354 = $(`<div id="html_c79abb0ebd3a8d884465145d477c6354" style="width: 100.0%; height: 100.0%;">         <b>Chuquisaca</b><br>         Tasa de no asistencia: <b>75.8%</b><br>         Estudiantes (5-19 años): 792<br>         Ingreso per cápita promedio: 1727 Bs<br>         Tasa de asistencia: 24.2%         </div>`)[0];
+                popup_b6019cf3a8dd7c303c0f9f475c38bc6c.setContent(html_c79abb0ebd3a8d884465145d477c6354);
+            
+        
+
+        circle_marker_2d1533d3cd334c7e3b57228af2e0f3a1.bindPopup(popup_b6019cf3a8dd7c303c0f9f475c38bc6c)
+        ;
+
+        
+    
+    
+            var marker_7a2bf5f425a5698c7907d90c486f9332 = L.marker(
+                [-19.0471, -65.5596],
+                {
+}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+            var div_icon_6b2d26b7f379816a263be21098c752f8 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt;font-weight:bold;\n                color:#333;background:white;padding:2px 5px;border-radius:3px;\n                border:1px solid #ccc;white-space:nowrap;\"\u003eChuquisaca: 76%\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_7a2bf5f425a5698c7907d90c486f9332.setIcon(div_icon_6b2d26b7f379816a263be21098c752f8);
+            
+    
+            var circle_marker_67e6ad7efdb54864e08d1a32e37762d0 = L.circleMarker(
+                [-17.9833, -67.15],
+                {"bubblingMouseEvents": true, "color": "#990000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#990000", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22.414281161795042, "stroke": true, "weight": 2}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+        var popup_314c4a0056bcb0d4aa986a9848de9b0c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_55ddb9bfb575aa62652fa09dfe2c013c = $(`<div id="html_55ddb9bfb575aa62652fa09dfe2c013c" style="width: 100.0%; height: 100.0%;">         <b>Oruro</b><br>         Tasa de no asistencia: <b>68.5%</b><br>         Estudiantes (5-19 años): 785<br>         Ingreso per cápita promedio: 1270 Bs<br>         Tasa de asistencia: 31.5%         </div>`)[0];
+                popup_314c4a0056bcb0d4aa986a9848de9b0c.setContent(html_55ddb9bfb575aa62652fa09dfe2c013c);
+            
+        
+
+        circle_marker_67e6ad7efdb54864e08d1a32e37762d0.bindPopup(popup_314c4a0056bcb0d4aa986a9848de9b0c)
+        ;
+
+        
+    
+    
+            var marker_8c56515b819ec6c30fb6fcd7b2d12d55 = L.marker(
+                [-17.9833, -67.45],
+                {
+}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+            var div_icon_b5750721e428b41f63bdf0748086d997 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt;font-weight:bold;\n                color:#333;background:white;padding:2px 5px;border-radius:3px;\n                border:1px solid #ccc;white-space:nowrap;\"\u003eOruro: 69%\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_8c56515b819ec6c30fb6fcd7b2d12d55.setIcon(div_icon_b5750721e428b41f63bdf0748086d997);
+            
+    
+            var circle_marker_6809c640c53f176be345fd00c499af01 = L.circleMarker(
+                [-21.5333, -64.7333],
+                {"bubblingMouseEvents": true, "color": "#990000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#990000", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22.184679398179277, "stroke": true, "weight": 2}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+        var popup_700432e7779529fbfa56295ae2fe911d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1574463a4a4f16b2c88f3b808acfd624 = $(`<div id="html_1574463a4a4f16b2c88f3b808acfd624" style="width: 100.0%; height: 100.0%;">         <b>Tarija</b><br>         Tasa de no asistencia: <b>66.4%</b><br>         Estudiantes (5-19 años): 769<br>         Ingreso per cápita promedio: 1933 Bs<br>         Tasa de asistencia: 33.6%         </div>`)[0];
+                popup_700432e7779529fbfa56295ae2fe911d.setContent(html_1574463a4a4f16b2c88f3b808acfd624);
+            
+        
+
+        circle_marker_6809c640c53f176be345fd00c499af01.bindPopup(popup_700432e7779529fbfa56295ae2fe911d)
+        ;
+
+        
+    
+    
+            var marker_18c1dfe9a68fbd58273b324a3ff79cea = L.marker(
+                [-21.5333, -65.0333],
+                {
+}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+            var div_icon_124dab318ba7c3914838d13b4b37ff6b = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt;font-weight:bold;\n                color:#333;background:white;padding:2px 5px;border-radius:3px;\n                border:1px solid #ccc;white-space:nowrap;\"\u003eTarija: 66%\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_18c1dfe9a68fbd58273b324a3ff79cea.setIcon(div_icon_124dab318ba7c3914838d13b4b37ff6b);
+            
+    
+            var circle_marker_be8da9b0c254921e83c64009c3cb5d49 = L.circleMarker(
+                [-17.3895, -66.1568],
+                {"bubblingMouseEvents": true, "color": "#990000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#990000", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 33.18794962030647, "stroke": true, "weight": 2}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+        var popup_beeb2e9eda4c185d9e3d6999b2dcf10a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_31efb4dc1e094592acfcd4716c558c5b = $(`<div id="html_31efb4dc1e094592acfcd4716c558c5b" style="width: 100.0%; height: 100.0%;">         <b>Cochabamba</b><br>         Tasa de no asistencia: <b>63.8%</b><br>         Estudiantes (5-19 años): 1,721<br>         Ingreso per cápita promedio: 1288 Bs<br>         Tasa de asistencia: 36.2%         </div>`)[0];
+                popup_beeb2e9eda4c185d9e3d6999b2dcf10a.setContent(html_31efb4dc1e094592acfcd4716c558c5b);
+            
+        
+
+        circle_marker_be8da9b0c254921e83c64009c3cb5d49.bindPopup(popup_beeb2e9eda4c185d9e3d6999b2dcf10a)
+        ;
+
+        
+    
+    
+            var marker_9c9f0976d7d449629c74232f14af62d2 = L.marker(
+                [-17.3895, -66.4568],
+                {
+}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+            var div_icon_d793d9c5830edc1e6a1f15f1e56f486e = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt;font-weight:bold;\n                color:#333;background:white;padding:2px 5px;border-radius:3px;\n                border:1px solid #ccc;white-space:nowrap;\"\u003eCochabamba: 64%\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_9c9f0976d7d449629c74232f14af62d2.setIcon(div_icon_d793d9c5830edc1e6a1f15f1e56f486e);
+            
+    
+            var circle_marker_1f4c80abb193bd19dbe9869fa42ebad5 = L.circleMarker(
+                [-14.8333, -64.9],
+                {"bubblingMouseEvents": true, "color": "#990000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#990000", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22.726196338146867, "stroke": true, "weight": 2}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+        var popup_f70910b69805fdfb59facb6677177bc6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_71c82dcb9db6609641bec8891468f26c = $(`<div id="html_71c82dcb9db6609641bec8891468f26c" style="width: 100.0%; height: 100.0%;">         <b>Beni</b><br>         Tasa de no asistencia: <b>61.6%</b><br>         Estudiantes (5-19 años): 807<br>         Ingreso per cápita promedio: 867 Bs<br>         Tasa de asistencia: 38.4%         </div>`)[0];
+                popup_f70910b69805fdfb59facb6677177bc6.setContent(html_71c82dcb9db6609641bec8891468f26c);
+            
+        
+
+        circle_marker_1f4c80abb193bd19dbe9869fa42ebad5.bindPopup(popup_f70910b69805fdfb59facb6677177bc6)
+        ;
+
+        
+    
+    
+            var marker_959d9b78ae469b2f224a9027bd5cb3f9 = L.marker(
+                [-14.8333, -65.2],
+                {
+}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+            var div_icon_21538f0a2a02958649866b560c51fbb0 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt;font-weight:bold;\n                color:#333;background:white;padding:2px 5px;border-radius:3px;\n                border:1px solid #ccc;white-space:nowrap;\"\u003eBeni: 62%\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_959d9b78ae469b2f224a9027bd5cb3f9.setIcon(div_icon_21538f0a2a02958649866b560c51fbb0);
+            
+    
+            var circle_marker_8ff513730d8667b652eddd94c2ba7b2c = L.circleMarker(
+                [-19.5836, -65.7531],
+                {"bubblingMouseEvents": true, "color": "#B45F06", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#B45F06", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 23.033888078220752, "stroke": true, "weight": 2}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+        var popup_3976d93fb7a5cb277616809ff06d0fd8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_22fdb9a4463b3ccf9e07e979bfe71f1a = $(`<div id="html_22fdb9a4463b3ccf9e07e979bfe71f1a" style="width: 100.0%; height: 100.0%;">         <b>Potosí</b><br>         Tasa de no asistencia: <b>57.8%</b><br>         Estudiantes (5-19 años): 829<br>         Ingreso per cápita promedio: 988 Bs<br>         Tasa de asistencia: 42.2%         </div>`)[0];
+                popup_3976d93fb7a5cb277616809ff06d0fd8.setContent(html_22fdb9a4463b3ccf9e07e979bfe71f1a);
+            
+        
+
+        circle_marker_8ff513730d8667b652eddd94c2ba7b2c.bindPopup(popup_3976d93fb7a5cb277616809ff06d0fd8)
+        ;
+
+        
+    
+    
+            var marker_cf577d1740b0c4694b834016aebb8bd5 = L.marker(
+                [-19.5836, -66.0531],
+                {
+}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+            var div_icon_87107b7f791bbef03d8125ee810a30c4 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt;font-weight:bold;\n                color:#333;background:white;padding:2px 5px;border-radius:3px;\n                border:1px solid #ccc;white-space:nowrap;\"\u003ePotos\u00ed: 58%\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_cf577d1740b0c4694b834016aebb8bd5.setIcon(div_icon_87107b7f791bbef03d8125ee810a30c4);
+            
+    
+            var circle_marker_874268d680392917b24b27bc2cdda2a2 = L.circleMarker(
+                [-17.7833, -63.1821],
+                {"bubblingMouseEvents": true, "color": "#B45F06", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#B45F06", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 37.094473981982816, "stroke": true, "weight": 2}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+        var popup_d07907d942415ef2dd284d4020c32ca6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_be49cde6e7076234ec9617b413510192 = $(`<div id="html_be49cde6e7076234ec9617b413510192" style="width: 100.0%; height: 100.0%;">         <b>Santa Cruz</b><br>         Tasa de no asistencia: <b>55.5%</b><br>         Estudiantes (5-19 años): 2,150<br>         Ingreso per cápita promedio: 1007 Bs<br>         Tasa de asistencia: 44.5%         </div>`)[0];
+                popup_d07907d942415ef2dd284d4020c32ca6.setContent(html_be49cde6e7076234ec9617b413510192);
+            
+        
+
+        circle_marker_874268d680392917b24b27bc2cdda2a2.bindPopup(popup_d07907d942415ef2dd284d4020c32ca6)
+        ;
+
+        
+    
+    
+            var marker_4996c8785fd3abf659d50f2484db3f0d = L.marker(
+                [-17.7833, -63.482099999999996],
+                {
+}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+            var div_icon_9adf197848eff9f78e6bbf98500eb073 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt;font-weight:bold;\n                color:#333;background:white;padding:2px 5px;border-radius:3px;\n                border:1px solid #ccc;white-space:nowrap;\"\u003eSanta Cruz: 55%\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_4996c8785fd3abf659d50f2484db3f0d.setIcon(div_icon_9adf197848eff9f78e6bbf98500eb073);
+            
+    
+            var circle_marker_1a3b163577af2ea88d2184320360be98 = L.circleMarker(
+                [-11.0333, -68.7667],
+                {"bubblingMouseEvents": true, "color": "#38761D", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#38761D", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.77705214210592, "stroke": true, "weight": 2}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+        var popup_07565d8940c67626ae31b37e014382dd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_779b829d3909ce9f37f0333dd11df831 = $(`<div id="html_779b829d3909ce9f37f0333dd11df831" style="width: 100.0%; height: 100.0%;">         <b>Pando</b><br>         Tasa de no asistencia: <b>47.1%</b><br>         Estudiantes (5-19 años): 741<br>         Ingreso per cápita promedio: 1293 Bs<br>         Tasa de asistencia: 52.9%         </div>`)[0];
+                popup_07565d8940c67626ae31b37e014382dd.setContent(html_779b829d3909ce9f37f0333dd11df831);
+            
+        
+
+        circle_marker_1a3b163577af2ea88d2184320360be98.bindPopup(popup_07565d8940c67626ae31b37e014382dd)
+        ;
+
+        
+    
+    
+            var marker_f2a1a41ba30fcabe5b2d2bb693c2871f = L.marker(
+                [-11.0333, -69.0667],
+                {
+}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+            var div_icon_eefd9fee305deda86bcedf6c06ac4326 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt;font-weight:bold;\n                color:#333;background:white;padding:2px 5px;border-radius:3px;\n                border:1px solid #ccc;white-space:nowrap;\"\u003ePando: 47%\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_f2a1a41ba30fcabe5b2d2bb693c2871f.setIcon(div_icon_eefd9fee305deda86bcedf6c06ac4326);
+            
+    
+            var circle_marker_582238105f86b64b25dfc7f46433e4d5 = L.circleMarker(
+                [-16.5, -68.15],
+                {"bubblingMouseEvents": true, "color": "#38761D", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#38761D", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40.183578735597955, "stroke": true, "weight": 2}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+        var popup_c33a64ec78242470b78787f2feb31824 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_11c36ed2e99065f830363a2fcad48b38 = $(`<div id="html_11c36ed2e99065f830363a2fcad48b38" style="width: 100.0%; height: 100.0%;">         <b>La Paz</b><br>         Tasa de no asistencia: <b>27.0%</b><br>         Estudiantes (5-19 años): 2,523<br>         Ingreso per cápita promedio: 849 Bs<br>         Tasa de asistencia: 73.0%         </div>`)[0];
+                popup_c33a64ec78242470b78787f2feb31824.setContent(html_11c36ed2e99065f830363a2fcad48b38);
+            
+        
+
+        circle_marker_582238105f86b64b25dfc7f46433e4d5.bindPopup(popup_c33a64ec78242470b78787f2feb31824)
+        ;
+
+        
+    
+    
+            var marker_32d71ce1721fc9047f3744945d22c57c = L.marker(
+                [-16.5, -68.45],
+                {
+}
+            ).addTo(map_2dc95822a9c17ea3ff8ae036981df73c);
+        
+    
+            var div_icon_c7089dd2dbadc7b231e5c32bf15177cf = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt;font-weight:bold;\n                color:#333;background:white;padding:2px 5px;border-radius:3px;\n                border:1px solid #ccc;white-space:nowrap;\"\u003eLa Paz: 27%\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_32d71ce1721fc9047f3744945d22c57c.setIcon(div_icon_c7089dd2dbadc7b231e5c32bf15177cf);
+            
+</script>
+</html>
